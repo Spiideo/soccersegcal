@@ -75,7 +75,6 @@ class Camera:
     def __init__(self, iwidth=960, iheight=540):
         self.position = np.zeros(3)
         self.rotation = np.eye(3)
-        self.calibration = np.eye(3)
         self.radial_distortion = np.zeros(6)
         self.thin_prism_disto = np.zeros(4)
         self.tangential_disto = np.zeros(2)
@@ -179,23 +178,9 @@ class Camera:
         self.xfocal_length = calib_json_object["x_focal_length"]
         self.yfocal_length = calib_json_object["y_focal_length"]
 
-        self.calibration = np.array([
-            [self.xfocal_length, 0, self.principal_point[0]],
-            [0, self.yfocal_length, self.principal_point[1]],
-            [0, 0, 1]
-        ], dtype='float')
-
         pan = calib_json_object['pan_degrees'] * np.pi / 180.
         tilt = calib_json_object['tilt_degrees'] * np.pi / 180.
         roll = calib_json_object['roll_degrees'] * np.pi / 180.
-
-        self.rotation = np.array([
-            [-np.sin(pan) * np.sin(roll) * np.cos(tilt) + np.cos(pan) * np.cos(roll),
-             np.sin(pan) * np.cos(roll) + np.sin(roll) * np.cos(pan) * np.cos(tilt), np.sin(roll) * np.sin(tilt)],
-            [-np.sin(pan) * np.cos(roll) * np.cos(tilt) - np.sin(roll) * np.cos(pan),
-             -np.sin(pan) * np.sin(roll) + np.cos(pan) * np.cos(roll) * np.cos(tilt), np.sin(tilt) * np.cos(roll)],
-            [np.sin(pan) * np.sin(tilt), -np.sin(tilt) * np.cos(pan), np.cos(tilt)]
-        ], dtype='float')
 
         self.rotation = np.transpose(pan_tilt_roll_to_orientation(pan, tilt, roll))
 
@@ -263,12 +248,6 @@ class Camera:
         self.image_height = self.image_height * factor
 
         self.principal_point = (self.image_width / 2, self.image_height / 2)
-
-        self.calibration = np.array([
-            [self.xfocal_length, 0, self.principal_point[0]],
-            [0, self.yfocal_length, self.principal_point[1]],
-            [0, 0, 1]
-        ], dtype='float')
 
     def draw_corners(self, image, color=(0, 255, 0)):
         """
@@ -393,10 +372,13 @@ class Camera:
         # the principal point estimated by this method is very noisy, better keep it in the center of the image
         self.principal_point = (self.image_width / 2, self.image_height / 2)
         # self.principal_point = (K[0,2], K[1,2])
-        self.calibration = np.array([
+        return True, K
+
+    @property
+    def calibration(self):
+        return np.array([
             [self.xfocal_length, 0, self.principal_point[0]],
             [0, self.yfocal_length, self.principal_point[1]],
             [0, 0, 1]
         ], dtype='float')
-        return True, K
 
