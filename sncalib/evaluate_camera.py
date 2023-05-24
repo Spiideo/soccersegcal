@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 from tqdm import tqdm
 
-from src.camera import Camera
-from src.evaluate_extremities import scale_points, distance, mirror_labels
-from src.soccerpitch import SoccerPitch
+from sncalib.camera import Camera
+from sncalib.evaluate_extremities import scale_points, distance, mirror_labels
+from sncalib.soccerpitch import SoccerPitch
 
 
 def get_polylines(camera_annotation, width, height, sampling_factor=0.2):

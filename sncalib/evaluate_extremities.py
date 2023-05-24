@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from tqdm import tqdm
 
-from src.soccerpitch import SoccerPitch
+from sncalib.soccerpitch import SoccerPitch
 
 
 def distance(point1, point2):
