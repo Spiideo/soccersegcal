@@ -9,16 +9,36 @@ It includes a modified version of the
 in [sncalib](https://github.com/Spiideo/soccersegcal/tree/main/sncalib).
 
 ## Install
-Install requirements using
+Install pytorch3d following it's
+[installation instaructions](https://github.com/facebookresearch/pytorch3d/blob/main/INSTALL.md), for example
 
-    pip install -r requirements.txt
+    python -mpip install --no-cache-dir pytorch3d -f https://dl.fbaipublicfiles.com/pytorch3d/packaging/wheels/py38_cu113_pyt1120/download.html
+
+Install remaining requirements and setup python to run the modules from the checked
+out source
+
+    python -mpip install -r requirements.txt
+    python setup.py develop --user
+
+## Data
+Download the SoccerNet into `data/SoccerNet/calibration-2023`.
+
+```python
+from SoccerNet.Downloader import SoccerNetDownloader as SNdl
+soccerNetDownloader = SNdl(LocalDirectory="data/SoccerNet/calibration-2023")
+soccerNetDownloader.downloadDataTask(task="calibration-2023", split=["train", "valid", "test", "challenge"])
+```
+
+Run the dataloader to display the images and generated segmentations:
+
+    python soccersegcal/dataloader.py
 
 ## Train
 To train the segmentation model, use
 
-    python train.py
+    python soccersegcal/train.py
 
 ## Estimate Cameras
 To use the trained segmentation model to estimate camera parameters, use
 
-    python estimate_cameras.py
+    python soccersegcal/estimate_cameras.py

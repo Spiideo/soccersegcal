@@ -1,0 +1,9 @@
+tqdm
+wandb
+vi3o
+opencv-python
+shapely
+pytorch3d
+pytorch-lightning
+fire
+SoccerNet>=0.1.23
