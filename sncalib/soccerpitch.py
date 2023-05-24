@@ -43,6 +43,145 @@ class SoccerPitch:
         'Small rect. right top'
     ]
 
+    field_areas = {
+        'Goal right': {
+            'index': 5,
+            'border': [
+                'Goal right crossbar',
+                'Goal right post right',
+                'Side line right',
+                'Goal right post left',
+            ],
+            'contains': [
+                'Goal right crossbar',
+                'Goal right post right',
+                'Goal right post left',
+            ],
+        },
+        'Goal left': {
+            'index': 5,
+            'border': [
+                'Goal left crossbar',
+                'Goal left post right',
+                'Side line left',
+                'Goal left post left ',
+            ],
+            'contains': [
+                'Goal left crossbar',
+                'Goal left post right',
+                'Goal left post left ',
+            ],
+        },
+        'Small rect. right': {
+            'index': 4,
+            'border': [
+                'Small rect. right top',
+                'Small rect. right main',
+                'Small rect. right bottom',
+                'Side line right',
+            ],
+            'contains': [
+                'Small rect. right bottom',
+                'Small rect. right main',
+                'Small rect. right top',
+            ],
+        },
+        'Small rect. left': {
+            'index': 4,
+            'border': [
+                'Small rect. left top',
+                'Small rect. left main',
+                'Small rect. left bottom',
+                'Side line left',
+            ],
+            'contains': [
+                'Small rect. left bottom',
+                'Small rect. left main',
+                'Small rect. left top',
+            ],
+        },
+        'Circle left': {
+            'index': 3,
+            'border': ['Big rect. left main', 'Circle left'],
+            'contains': ['Circle left'],
+        },
+        'Circle right': {
+            'index': 3,
+            'border': ['Big rect. right main', 'Circle right'],
+            'contains': ['Circle right'],
+        },
+        'Big rect. right': {
+            'index': 2,
+            'border': [
+                'Big rect. right top',
+                'Big rect. right main',
+                'Big rect. right bottom',
+                'Side line right',
+            ],
+            'contains': [
+                'Big rect. right top',
+                'Big rect. right main',
+                'Big rect. right bottom',
+                'Small rect. right bottom',
+                'Small rect. right main',
+                'Small rect. right top',
+            ],
+        },
+        'Big rect. left': {
+            'index': 2,
+            'border': [
+                'Big rect. left top',
+                'Big rect. left main',
+                'Big rect. left bottom',
+                'Side line left',
+            ],
+            'contains': [
+                'Big rect. left top',
+                'Big rect. left main',
+                'Big rect. left bottom',
+                'Small rect. left bottom',
+                'Small rect. left main',
+                'Small rect. left top',
+            ],
+        },
+        'Circle central': {
+            'index': 1,
+            'border': ['Circle central'],
+            'contains': ['Circle central'],
+        },
+        'Full field': {
+            'index': 0,
+            'border': [
+                'Side line bottom',
+                'Side line left',
+                'Side line top',
+                'Side line right',
+            ],
+            'contains': [
+                'Side line bottom',
+                'Side line left',
+                'Side line top',
+                'Side line right',
+                'Big rect. left bottom',
+                'Big rect. left main',
+                'Big rect. left top',
+                'Big rect. right bottom',
+                'Big rect. right main',
+                'Big rect. right top',
+                'Circle central',
+                'Circle left',
+                'Circle right',
+                'Middle line',
+                'Small rect. left bottom',
+                'Small rect. left main',
+                'Small rect. left top',
+                'Small rect. right bottom',
+                'Small rect. right main',
+                'Small rect. right top'
+            ],
+        }
+    }
+
     symetric_classes = {
         'Side line top': 'Side line bottom',
         'Side line bottom': 'Side line top',
