@@ -21,7 +21,7 @@ out source
     python setup.py develop --user
 
 ## Data
-Download the SoccerNet into `data/SoccerNet/calibration-2023`.
+Download the SoccerNet into `data/SoccerNet/calibration-2023`
 
 ```python
 from SoccerNet.Downloader import SoccerNetDownloader as SNdl
@@ -34,7 +34,7 @@ Run the dataloader to display the images and generated segmentations:
     python soccersegcal/dataloader.py
 
 ## Train
-To train the segmentation model, use
+Train the segmentation model (add `--help` to se availible options):
 
     python soccersegcal/train.py
 
