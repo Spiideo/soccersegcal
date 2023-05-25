@@ -91,6 +91,8 @@ class SoccerNetFieldSegmentationDataset(Dataset):
             height = (width * 9) // 16
         self.root = Path(datasetpath)
         self.images = list((self.root / split).glob('*.jpg'))
+        if not len(self.images):
+            raise FileNotFoundError(f'No .jpg images found in {self.root / split}')
         self.images.sort()
         self.shape = (height,  width)
         self.bad = {

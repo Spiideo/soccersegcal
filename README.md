@@ -33,12 +33,30 @@ Run the dataloader to display the images and generated segmentations:
 
     python soccersegcal/dataloader.py
 
-## Train
+## Train Segmentation
 Train the segmentation model (add `--help` to se availible options):
 
     python soccersegcal/train.py
 
-## Estimate Cameras
-To use the trained segmentation model to estimate camera parameters, use
+To monitor training progress, compare different runs and get hold of the resulting checkpoint.ckpt:
 
-    python soccersegcal/estimate_cameras.py
+    mlflow ui
+
+The checkpoint can also be found by digging through the `mlruns` dir.
+
+## Estimate Cameras
+To use the trained segmentation model to estimate camera parameters for the first two samples (index 0 and 1) in the validation set while visualizing the optimization:
+
+    python soccersegcal/estimate_cameras.py -c path/to/segmentation/checkpoint.ckpt -i [0,1] -s
+
+To estimate all the cameras in the test set without visualisation (faster):
+
+    python soccersegcal/estimate_cameras.py -c path/to/segmentation/checkpoint.ckpt -p test
+
+To se other options:
+
+    python soccersegcal/estimate_cameras.py --help
+
+The estimated cameras will be saved in the `cams_out` directory. To run the SoccerNet evaluation on them:
+
+    python sncalib/evaluate_camera.py -s data/SoccerNet/calibration-2023/ --split test -p cams_out/

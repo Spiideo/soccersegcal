@@ -7,3 +7,5 @@ pytorch3d
 pytorch-lightning
 fire
 SoccerNet>=0.1.23
+scipy
+matplotlib
