@@ -3,6 +3,8 @@ Official implementation of Spiideo's contribution to the 2023
 [SoccerNet Camera Calibration challange](https://www.soccer-net.org/tasks/camera-calibration).
 
 ![Example segmentatoions](docs/segmentations.jpg)
+![Example optimization](docs/demo.mp4)
+
 
 It includes a modified version of the
 [SoccerNet Camera Calibration Development Kit](https://github.com/SoccerNet/sn-calibration)

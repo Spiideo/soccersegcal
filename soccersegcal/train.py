@@ -2,7 +2,7 @@ import torch
 from torch.nn import functional as F
 import pytorch_lightning as pl
 from torchvision.models.segmentation import deeplabv3_resnet50
-from dataloader import SoccerNetFieldSegmentationDataset, HFlipDataset
+from soccersegcal.dataloader import SoccerNetFieldSegmentationDataset, HFlipDataset
 from torch.utils.data import DataLoader
 import os
 import fire

@@ -476,10 +476,15 @@ def optimize_camera(meshes, segs, cam, max_itter=10000, max_no_improve=10000, mi
             pview(image_view, pause=False)
             pview(segs_view, pause=False)
             pview(segs_view.to('cuda')-image_view, pause=False)
+            # from vi3o.debugview import DebugViewer
+            # out.view(imscale(np.hstack([a[0] for a in DebugViewer.named_viewers['Default'].image_array]), (720, 134)))
+
             flipp() #pause=True)
 
     return loss, model, converged
 
+# from vi3o.image import ImageDirOut, imscale
+# out = ImageDirOut("demo", "png")
 
 def segs2cam(segs, world_scale, additional_start_cam=None, *, show=False):
     do_roll = True
