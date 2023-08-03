@@ -62,3 +62,9 @@ To se other options:
 The estimated cameras will be saved in the `cams_out` directory. To run the SoccerNet evaluation on them:
 
     python sncalib/evaluate_camera.py -s data/SoccerNet/calibration-2023/ --split test -p cams_out/
+
+## Pretrained weights
+Pretrained weights can be downloaded from the table below. It also lists hyperparameters with non-default values.
+
+| Hyperparameters | Combined Metric | Accuracy@5 | Completeness | |
+| epochs=27 | 0.53 | 52.95 | 99.96 | [snapshot.ckpt](https://github.com/Spiideo/soccersegcal/releases/download/SoccerNetChallenge2023/snapshot.ckpt) |
